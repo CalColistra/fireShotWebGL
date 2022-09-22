@@ -16,8 +16,14 @@ camera.position.setZ(30);
 
 renderer.render(scene, camera);  //draw
 
+const moonTexture = new THREE.TextureLoader().load('moon.jpg');
+const normalTexture = new THREE.TextureLoader().load('noramlTexture.jpg');
+
 const geometry = new THREE.TorusGeometry(10, 3,16, 100);
-const material = new THREE.MeshStandardMaterial( {color: 0xFF6347});
+const material = new THREE.MeshStandardMaterial({
+    map: moonTexture,
+    normalMap: normalTexture
+  })
 const torus = new THREE.Mesh( geometry, material);
 
 scene.add(torus)
@@ -50,8 +56,6 @@ Array(200).fill().forEach(addStar)  //use addStar() to add 200 random stars
 const spaceTexture = new THREE.TextureLoader().load('space.jpg');
 scene.background = spaceTexture;
 
-const moonTexture = new THREE.TextureLoader().load('moon.jpg');
-const normalTexture = new THREE.TextureLoader().load('noramlTexture.jpg');
 
 const moon = new THREE.Mesh(
   new THREE.SphereGeometry(3, 32, 32),
