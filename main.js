@@ -4,7 +4,7 @@ import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls'
 //-----------------------------------------------------------------------------------------------
 const scene = new THREE.Scene();  //create scene
 //create camera:
-const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 1, 1000);
+const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 1, 2000);
 //-----------------------------------------------------------------------------------------------
 //create renderer for <canvas> in index.html
 const renderer = new THREE.WebGLRenderer({
@@ -25,6 +25,8 @@ const milkyWayTexture = new THREE.TextureLoader().load('assets/milkyWay.jpg');
 const earthTexture = new THREE.TextureLoader().load('assets/earthTexture.jpg');
 const starTexture = new THREE.TextureLoader().load('assets/starTexture.jpg');
 const jupiterTexture = new THREE.TextureLoader().load('assets/jupiterTexture.jpg');
+const marsTexture = new THREE.TextureLoader().load('assets/marsTexture.jpg');
+const saturnTexture = new THREE.TextureLoader().load('assets/saturnTexture.jpg');
 //-----------------------------------------------------------------------------------------------
 /*
 //make ring (torus):
@@ -64,7 +66,7 @@ function addStar() {  //function to add a star at a random position to the scene
   star.position.set(x,y,z);
   scene.add(star)
 }
-Array(5500).fill().forEach(addStar)  //use addStar() to add 200 random stars
+Array(5500).fill().forEach(addStar)  //use addStar() to add 5500 random stars
 //-----------------------------------------------------------------------------------------------
 //set up background
 const spaceTexture = new THREE.TextureLoader().load('assets/space.jpg');
@@ -72,9 +74,12 @@ scene.background = spaceTexture;
 
 //-------------------PLANETS---------------------------------------------------------
 const sunSize = 5;
-const earthSize = 3;
-const plutoSize = 1;
+const earthSize = 5;
+const plutoSize = 7;
 const jupiterSize = 7;
+const marsSize = 5;
+const saturnSize = 5;
+//--------------------
 const milkyWay = new THREE.Mesh(  //milkyWay set up
   new THREE.SphereGeometry(.1, 32  ),
   new THREE.MeshStandardMaterial({
@@ -94,6 +99,16 @@ const earth = new THREE.Mesh(  //earth set up
 );
 scene.add(earth);  //add earth
 
+//saturn:
+const saturn = new THREE.Mesh(  //earth set up
+  new THREE.SphereGeometry(saturnSize, 32, 35),
+  new THREE.MeshStandardMaterial({
+    map: saturnTexture,
+    normalMap: normalTexture
+  })
+);
+scene.add(saturn);  //add saturn
+
 //jupiter:
 const jupiter = new THREE.Mesh(  //jupiter set up
   new THREE.SphereGeometry(jupiterSize, 32, 35),
@@ -102,7 +117,17 @@ const jupiter = new THREE.Mesh(  //jupiter set up
     normalMap: normalTexture
   })
 );
-scene.add(jupiter);  //add earth
+scene.add(jupiter);  //add jupiter
+
+//jupiter:
+const mars = new THREE.Mesh(  //jupiter set up
+  new THREE.SphereGeometry(marsSize, 32, 35),
+  new THREE.MeshStandardMaterial({
+    map: marsTexture,
+    normalMap: normalTexture
+  })
+);
+scene.add(mars);  //add mars
 
 /*
 const moon = new THREE.Mesh(  //moon set up
@@ -136,11 +161,15 @@ const pluto = new THREE.Mesh(  //pluto set up
 );
 scene.add(pluto);  //add pluto
 //-----------------------------------------------------------------------------------------------
-//vars needed for orbit:
-var plutoDistance = 80;
+//vars needed for orbit: 
+//scale distance formula => (actual distance from sun) / .31
+var plutoDistance = 1183.87;
 var sunDistance = 5;
 var earthDistance = 15;
 var jupiterDistance = 156.12;
+var marsDistance = 45.806;
+var saturnDistance = 286.774;
+//-----------------------------
 var theta = 0;
 var dTheta = 2 * Math.PI / 1000;
 const earthYear = 2 * Math.PI * (1/60) * (1/60);
@@ -167,6 +196,16 @@ function movePlanets() {
   jupiter.position.x = jupiterDistance * Math.cos(theta);
   jupiter.position.z = jupiterDistance * Math.sin(theta);
   jupiter.position.y = (jupiterDistance * Math.sin(theta)) / 2;
+  //mars:
+  mars.rotation.y += earthYear*4;
+  mars.position.x = marsDistance * Math.cos(theta);
+  mars.position.z = marsDistance * Math.sin(theta);
+  mars.position.y = (marsDistance * Math.sin(theta)) / 2;
+  //saturn:
+  saturn.rotation.y += earthYear*4;
+  saturn.position.x = saturnDistance * Math.cos(theta);
+  saturn.position.z = saturnDistance * Math.sin(theta);
+  saturn.position.y = (saturnDistance * Math.sin(theta)) / 2;
 }
 //-----------------------------------------------------------------------------------------------
 function animate() {  //infinite looping function to refresh 60fps
