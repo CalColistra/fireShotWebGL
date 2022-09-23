@@ -79,6 +79,8 @@ const plutoSize = 7;
 const jupiterSize = 7;
 const marsSize = 5;
 const saturnSize = 5;
+const heightSegments = 27;
+const widthSegments = 23;
 //--------------------
 const milkyWay = new THREE.Mesh(  //milkyWay set up
   new THREE.SphereGeometry(.1, 32  ),
@@ -91,7 +93,7 @@ scene.add(milkyWay)
 
 //earth:
 const earth = new THREE.Mesh(  //earth set up
-  new THREE.SphereGeometry(earthSize, 32, 35),
+  new THREE.SphereGeometry(earthSize, widthSegments, heightSegments),
   new THREE.MeshStandardMaterial({
     map: earthTexture,
     normalMap: normalTexture
@@ -100,8 +102,8 @@ const earth = new THREE.Mesh(  //earth set up
 scene.add(earth);  //add earth
 
 //saturn:
-const saturn = new THREE.Mesh(  //earth set up
-  new THREE.SphereGeometry(saturnSize, 32, 35),
+const saturn = new THREE.Mesh(  //saturn set up
+  new THREE.SphereGeometry(saturnSize, widthSegments, heightSegments),
   new THREE.MeshStandardMaterial({
     map: saturnTexture,
     normalMap: normalTexture
@@ -111,7 +113,7 @@ scene.add(saturn);  //add saturn
 
 //jupiter:
 const jupiter = new THREE.Mesh(  //jupiter set up
-  new THREE.SphereGeometry(jupiterSize, 32, 35),
+  new THREE.SphereGeometry(jupiterSize, widthSegments, heightSegments),
   new THREE.MeshStandardMaterial({
     map: jupiterTexture,
     normalMap: normalTexture
@@ -119,9 +121,9 @@ const jupiter = new THREE.Mesh(  //jupiter set up
 );
 scene.add(jupiter);  //add jupiter
 
-//jupiter:
-const mars = new THREE.Mesh(  //jupiter set up
-  new THREE.SphereGeometry(marsSize, 32, 35),
+//mars:
+const mars = new THREE.Mesh(  //mars set up
+  new THREE.SphereGeometry(marsSize, widthSegments, heightSegments),
   new THREE.MeshStandardMaterial({
     map: marsTexture,
     normalMap: normalTexture
@@ -142,7 +144,7 @@ scene.add(moon);  //add moon
 
 //sun:
 const sun = new THREE.Mesh(  //sun set up
-  new THREE.SphereGeometry(sunSize, 32, 35),
+  new THREE.SphereGeometry(sunSize, widthSegments, heightSegments),
   new THREE.MeshStandardMaterial({
     map: sunTexture,
     normalMap: normalTexture
@@ -153,7 +155,7 @@ scene.add(sun);  //add sun
 
 //pluto:
 const pluto = new THREE.Mesh(  //pluto set up
-  new THREE.SphereGeometry(plutoSize, 32, 35),
+  new THREE.SphereGeometry(plutoSize, widthSegments, heightSegments),
   new THREE.MeshStandardMaterial({
     map: plutoTexture,
     normalMap: normalTexture
