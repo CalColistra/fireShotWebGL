@@ -17,14 +17,14 @@ camera.position.setZ(150);  //set camera Z position
 renderer.render(scene, camera);  //draw
 //-----------------------------------------------------------------------------------------------
 //set up textures:
-const moonTexture = new THREE.TextureLoader().load('moon.jpg');
-const sunTexture = new THREE.TextureLoader().load('sunTexture.jpg');
-const plutoTexture = new THREE.TextureLoader().load('plutoTexture.jpg');
-const normalTexture = new THREE.TextureLoader().load('noramlTexture.jpg');
-const milkyWayTexture = new THREE.TextureLoader().load('milkyWay.jpg');
-const earthTexture = new THREE.TextureLoader().load('earthTexture.jpg');
-const starTexture = new THREE.TextureLoader().load('starTexture.jpg');
-const jupiterTexture = new THREE.TextureLoader().load('jupiterTexture.jpg');
+const moonTexture = new THREE.TextureLoader().load('assets/moon.jpg');
+const sunTexture = new THREE.TextureLoader().load('assets/sunTexture.jpg');
+const plutoTexture = new THREE.TextureLoader().load('assets/plutoTexture.jpg');
+const normalTexture = new THREE.TextureLoader().load('assets/noramlTexture.jpg');
+const milkyWayTexture = new THREE.TextureLoader().load('assets/milkyWay.jpg');
+const earthTexture = new THREE.TextureLoader().load('assets/earthTexture.jpg');
+const starTexture = new THREE.TextureLoader().load('assets/starTexture.jpg');
+const jupiterTexture = new THREE.TextureLoader().load('assets/jupiterTexture.jpg');
 //-----------------------------------------------------------------------------------------------
 /*
 //make ring (torus):
@@ -67,7 +67,7 @@ function addStar() {  //function to add a star at a random position to the scene
 Array(5500).fill().forEach(addStar)  //use addStar() to add 200 random stars
 //-----------------------------------------------------------------------------------------------
 //set up background
-const spaceTexture = new THREE.TextureLoader().load('space.jpg');
+const spaceTexture = new THREE.TextureLoader().load('assets/space.jpg');
 scene.background = spaceTexture;
 
 //-------------------PLANETS---------------------------------------------------------
