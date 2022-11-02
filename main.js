@@ -66,7 +66,7 @@ function addStar() {  //function to add a star at a random position to the scene
   star.position.set(x,y,z);
   scene.add(star)
 }
-Array(5500).fill().forEach(addStar)  //use addStar() to add 5500 random stars
+Array(250).fill().forEach(addStar)  //use addStar() to add 5500 random stars
 //-----------------------------------------------------------------------------------------------
 //set up background
 const spaceTexture = new THREE.TextureLoader().load('assets/space.jpg');
