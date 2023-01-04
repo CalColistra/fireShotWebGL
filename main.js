@@ -2,6 +2,30 @@ import './style.css'
 import * as THREE from 'three';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls'
 //-----------------------------------------------------------------------------------------------
+
+// Import the functions you need from the SDKs you need
+import { initializeApp } from "firebase/app";
+import { getAnalytics } from "firebase/analytics";
+// TODO: Add SDKs for Firebase products that you want to use
+// https://firebase.google.com/docs/web/setup#available-libraries
+
+// Your web app's Firebase configuration
+// For Firebase JS SDK v7.20.0 and later, measurementId is optional
+const firebaseConfig = {
+  apiKey: "AIzaSyA1Akb7mNP_ius9EPgdCAyDCfyv9JV1fa8",
+  authDomain: "space-solar-system.firebaseapp.com",
+  projectId: "space-solar-system",
+  storageBucket: "space-solar-system.appspot.com",
+  messagingSenderId: "389909316268",
+  appId: "1:389909316268:web:22c9b7eca5cc0e2729d509",
+  measurementId: "G-TE6V9JC5CQ"
+};
+
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
+const analytics = getAnalytics(app);
+
+//-----------------------------------------------------------------------------------------------
 const scene = new THREE.Scene();  //create scene
 //create camera:
 const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 1, 2000);
@@ -17,16 +41,16 @@ camera.position.setZ(150);  //set camera Z position
 renderer.render(scene, camera);  //draw
 //-----------------------------------------------------------------------------------------------
 //set up textures:
-const moonTexture = new THREE.TextureLoader().load('assets/moon.jpg');
-const sunTexture = new THREE.TextureLoader().load('assets/sunTexture.jpg');
-const plutoTexture = new THREE.TextureLoader().load('assets/plutoTexture.jpg');
-const normalTexture = new THREE.TextureLoader().load('assets/noramlTexture.jpg');
-const milkyWayTexture = new THREE.TextureLoader().load('assets/milkyWay.jpg');
-const earthTexture = new THREE.TextureLoader().load('assets/earthTexture.jpg');
-const starTexture = new THREE.TextureLoader().load('assets/starTexture.jpg');
-const jupiterTexture = new THREE.TextureLoader().load('assets/jupiterTexture.jpg');
-const marsTexture = new THREE.TextureLoader().load('assets/marsTexture.jpg');
-const saturnTexture = new THREE.TextureLoader().load('assets/saturnTexture.jpg');
+const moonTexture = new THREE.TextureLoader().load('/moon.jpg');
+const sunTexture = new THREE.TextureLoader().load('/sunTexture.jpg');
+const plutoTexture = new THREE.TextureLoader().load('/plutoTexture.jpg');
+const normalTexture = new THREE.TextureLoader().load('/noramlTexture.jpg');
+const milkyWayTexture = new THREE.TextureLoader().load('/milkyWay.jpg');
+const earthTexture = new THREE.TextureLoader().load('/earthTexture.jpg');
+const starTexture = new THREE.TextureLoader().load('/starTexture.jpg');
+const jupiterTexture = new THREE.TextureLoader().load('/jupiterTexture.jpg');
+const marsTexture = new THREE.TextureLoader().load('/marsTexture.jpg');
+const saturnTexture = new THREE.TextureLoader().load('/saturnTexture.jpg');
 //-----------------------------------------------------------------------------------------------
 /*
 //make ring (torus):
@@ -69,7 +93,7 @@ function addStar() {  //function to add a star at a random position to the scene
 Array(250).fill().forEach(addStar)  //use addStar() to add 5500 random stars
 //-----------------------------------------------------------------------------------------------
 //set up background
-const spaceTexture = new THREE.TextureLoader().load('assets/space.jpg');
+const spaceTexture = new THREE.TextureLoader().load('/space.jpg');
 scene.background = spaceTexture;
 
 //-------------------PLANETS---------------------------------------------------------
